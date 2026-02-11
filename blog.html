@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mapa de Arborização - Belém do Pará</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const map = L.map("map").setView([-1.455, -48.489], 12);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    const treeIcon = L.icon({
+      iconUrl: "mapa-arborizacao-belem/arvore.png",
+      iconSize: [32, 32],
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -32]
+    });
+
+    // Ícone de alerta (adicione o caminho da imagem no campo abaixo)
+    const alertIcon = L.icon({
+      iconUrl: "alerta.png", // <-- Substitua por seu caminho da imagem de alerta
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
+      popupAnchor: [0, -12]
+    });
+
+    // Dados GeoJSON com todas as áreas de arborização
+    const geojsonData = {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Batista Campos",
+            "info": "Área com boa possibilidade para plantio urbano."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-48.4899721, -1.4606675]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Campina",
+            "info": "Área propensa ao reflorestamento urbano."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-48.498311, -1.453082]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Cidade Velha",
+            "info": "Área histórica com potencial para projetos de arborização."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-48.503462, -1.462092]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Marambaia",
+            "info": "Apesar da presença de áreas verdes, o índice está abaixo do recomendado pela ONU, indicando necessidade de expansão da arborização."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-48.449320, -1.402301]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Guamá",
+            "info": "Falta de espaços livres para arborização, aliada à urbanização intensa, a arborização precisa ser integrada com infraestrutura urbana e drenagem."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-48.463066, -1.465786]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Terra Firme",
+            "info": "Ausência de arborização nas vias internas e áreas de convívio comunitário, alto índice de impermeabilização do solo e ocupações irregulares atrapalham novos plantios."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-48.451245, -1.457048]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Jurunas",
+            "info": "Falta de planejamento paisagístico e espaço físico nas áreas urbanas para o plantio, a arborização precisa ser pensada junto com obras de requalificação urbana."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-48.493063, -1.469176]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Pedreira",
+            "info": "Pouco espaço nas calçadas e ocupações comerciais dificultam o plantio de árvores."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-48.472102, -1.428017]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Telégrafo",
+            "info": "Ausência de uniformidade na arborização, precisa-se mapear espaços ociosos para implementar arborização planejada e contínua."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-48.489022, -1.426309]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Condor",
+            "info": "Alta densidade urbana e falta de áreas livres para novos plantios, ideal focar em arborização de canteiros, calçadas estreitas e microáreas comunitárias."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-48.481225, -1.472376]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Cremação",
+            "info": "Falta de arborização funcional (sombra, controle térmico), precisa-se reocupar calçadas com espécies adequadas para áreas urbanas estreitas."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-48.476227, -1.461273]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Nazare",
+            "info": "Zona de alta densidade, ideal para projetos rápidos de arborização."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-48.484778, -1.452720]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "São Brás",
+            "info": "Área importante para plantio de espécies nativas."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-48.471511, -1.451101]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Marco",
+            "info": "Área ampla, com grande potencial para reflorestamento."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-48.458942, -1.436309]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Umarizal",
+            "info": "Espaço com boa cobertura de solo, ideal para reflorestamento."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-48.483611, -1.441111]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Benguí",
+            "info": "Zona com solo mais arenoso, ideal para espécies de rápido crescimento."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-48.457671, -1.376619]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Cabanagem",
+            "info": "Área com baixa arborização. Ideal para espécies de rápido crescimento."
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-48.433078, -1.368557]
+          }
+        }
+      ]
+    };
+
+    // Adiciona os pontos GeoJSON ao mapa
+    L.geoJSON(geojsonData, {
+      style: function (feature) {
+        return {
+          color: 'green',
+          fillColor: 'green',
+          fillOpacity: 0.3
+        };
+      },
+      onEachFeature: function (feature, layer) {
+        layer.bindPopup("<b>" + feature.properties.nome + "</b><br>");
+      }
+    }).addTo(map);
+
+    // Ícones de alerta para bairros com baixa arborização
+    const bairrosCriticos = {
+      "Guamá": [-1.464, -48.461],         // leve deslocamento ao norte e leste
+      "Terra Firme": [-1.455, -48.449],   // leve deslocamento ao norte e leste
+      "Jurunas": [-1.467, -48.491]        // leve deslocamento ao norte e leste
+    };
+
+    Object.entries(bairrosCriticos).forEach(([nome, coords]) => {
+      L.marker(coords, { icon: alertIcon })
+        .addTo(map)
+        .bindPopup(`<b>${nome}</b><br>⚠️ Região com baixa arborização`);
+    });
+
+    // Função para carregar marcadores do localStorage
+    function loadMarkers() {
+      const markers = JSON.parse(localStorage.getItem('treeMarkers')) || [];
+      markers.forEach(marker => {
+        L.marker([marker.lat, marker.lng], { icon: treeIcon })
+          .addTo(map)
+          .bindPopup("Chegou na parada!");
+      });
+    }
+
+    // Evento de clique no mapa para adicionar ícones de árvores
+    map.on('click', function(e) {
+      const newMarker = { lat: e.latlng.lat, lng: e.latlng.lng };
+      L.marker([newMarker.lat, newMarker.lng], { icon: treeIcon })
+        .addTo(map)
+        .bindPopup("Árvore adicionada aqui!")
+        .openPopup();
+      const markers = JSON.parse(localStorage.getItem('treeMarkers')) || [];
+      markers.push(newMarker);
+      localStorage.setItem('treeMarkers', JSON.stringify(markers));
+    });
+
+    loadMarkers();
+
+
+  </script>
+
+<a href="index.html" style="
+position: absolute;
+top: 20px;
+left: 60px;
+padding: 8px 12px;
+background-color: #4CAF50;
+color: white;
+border-radius: 4px;
+text-decoration: none;
+font-weight: bold;
+z-index: 1000;
+">
+Voltar
+</a>
+
+</body>
+</html>

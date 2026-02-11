@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Assinatura - ArboVita</title>
+  <link href="assets/img/logo.jpeg" rel="icon">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">ArboVita</h1>
+      </a>
+      <a class="btn-getstarted" href="profile.html">Meu Perfil</a>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <div class="page-title dark-background" style="background-image: url('assets/img/hero-bg.jpg'); background-size: cover; position: relative;">
+      <div class="container position-relative" style="z-index: 2;">
+        <h1><i class="bi bi-tree-fill text-success"></i> Assine o Plano Verde</h1>
+        <p>Contribua mensalmente para a arborização da sua cidade.</p>
+      </div>
+      <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); z-index: 1;"></div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-5 mb-4">
+             <!-- Benefícios - Estilo Clean -->
+             <div class="p-4 h-100">
+                <h3 class="text-success fw-bold mb-4">Por que assinar?</h3>
+                <div class="d-flex mb-3 eco-list-item rounded">
+                    <div class="me-3 text-success"><i class="bi bi-wind fs-3"></i></div>
+                    <div>
+                        <h5 class="fw-bold mb-1">Ar Mais Puro</h5>
+                        <p class="mb-0 text-muted small">Suas árvores filtraram toneladas de CO2 anualmente.</p>
+                    </div>
+                </div>
+                <div class="d-flex mb-3 eco-list-item rounded">
+                    <div class="me-3 text-success"><i class="bi bi-thermometer-sun fs-3"></i></div>
+                    <div>
+                        <h5 class="fw-bold mb-1">Menos Calor</h5>
+                        <p class="mb-0 text-muted small">Ajude a reduzir as ilhas de calor urbanas em até 2°C.</p>
+                    </div>
+                </div>
+                <div class="d-flex mb-3 eco-list-item rounded">
+                    <div class="me-3 text-success"><i class="bi bi-flower1 fs-3"></i></div>
+                    <div>
+                        <h5 class="fw-bold mb-1">Biodiversidade</h5>
+                        <p class="mb-0 text-muted small">Atraia pássaros e embeleze a nossa cidade.</p>
+                    </div>
+                </div>
+             </div>
+          </div>
+
+          <div class="col-lg-6">
+            
+            <div class="card shadow-lg border-0 position-relative" style="border-radius: 20px; overflow: visible;">
+              <div class="eco-badge"><i class="bi bi-check"></i></div>
+              <div class="card-body p-5">
+                <h3 class="card-title text-center mb-4 text-success fw-bold"><i class="bi bi-star-fill text-warning"></i> Plano Mensal - R$ 20,00</h3>
+                <p class="text-center text-muted mb-4">Cancelamento grátis a qualquer momento.</p>
+                
+                <form id="paymentForm">
+                  <div class="mb-3">
+                    <label class="form-label fw-bold text-secondary">Nome no Cartão</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light border-end-0"><i class="bi bi-person"></i></span>
+                        <input type="text" class="form-control border-start-0 ps-0" required placeholder="Como impresso no cartão">
+                    </div>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label class="form-label fw-bold text-secondary">Número do Cartão</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light border-end-0"><i class="bi bi-credit-card"></i></span>
+                        <input type="text" class="form-control border-start-0 ps-0" required placeholder="0000 0000 0000 0000">
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-6 mb-3">
+                      <label class="form-label fw-bold text-secondary">Validade</label>
+                      <input type="text" class="form-control" required placeholder="MM/AA">
+                    </div>
+                    <div class="col-6 mb-3">
+                      <label class="form-label fw-bold text-secondary">CVV</label>
+                      <div class="input-group">
+                        <span class="input-group-text bg-light border-end-0"><i class="bi bi-lock"></i></span>
+                        <input type="text" class="form-control border-start-0 ps-0" required placeholder="123">
+                      </div>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn eco-btn-gradient w-100 py-3 fs-5 rounded-pill shadow-sm mt-3">
+                    <i class="bi bi-heart-fill me-2"></i> Assinar e Plantar
+                  </button>
+                  
+                  <div class="text-center mt-3">
+                    <small class="text-muted"><i class="bi bi-shield-lock-fill text-success"></i> Pagamento 100% Seguro</small>
+                  </div>
+
+                </form>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  
+  <script>
+    document.getElementById('paymentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData();
+      
+      // Captura o número do cartão para salvar apenas os últimos 4 dígitos (Simulação)
+      const cardInput = document.querySelector('input[placeholder="0000 0000 0000 0000"]');
+      const cardNumber = cardInput.value.replace(/\D/g, ''); // Remove espaços/pontos
+      const last4 = cardNumber.slice(-4) || '****'; // Pega os ultimos 4
+
+      fetch('/api/subscribe', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Salva o cartão no navegador
+        const cardData = {
+          brand: 'Mastercard', // Em um app real, detectariamos a bandeira
+          last4: last4
+        };
+        localStorage.setItem('arboVitaCard', JSON.stringify(cardData));
+
+        alert('Assinatura realizada com sucesso! Seu cartão foi salvo.');
+        window.location.href = 'profile.html';
+      })
+      .catch(error => alert('Erro ao processar pagamento.'));
+    });
+  </script>
+
+</body>
+</html>

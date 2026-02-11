@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mapa de Plantio - Belém do Pará</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Inicializa o mapa e centraliza em Belém do Pará
+    const map = L.map("map").setView([-1.455, -48.489], 12);
+
+    // Camada de base com OpenStreetMap
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Caminho para o ícone da árvore
+    const treeIcon = L.icon({
+      iconUrl: "arvore.png", // Substitua com o caminho correto da sua imagem
+      iconSize: [32, 32],
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -32]
+    });
+
+    // Dados GeoJSON com todas as áreas de arborização
+    const geojsonData = {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Batista Campos",
+            "info": "Área com boa possibilidade para plantio urbano."
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [-48.475, -1.455],
+                [-48.473, -1.454],
+                [-48.472, -1.452],
+                [-48.475, -1.451],
+                [-48.475, -1.455]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Campina",
+            "info": "Área propensa ao reflorestamento urbano."
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [-48.490, -1.455],
+                [-48.485, -1.454],
+                [-48.485, -1.452],
+                [-48.490, -1.451],
+                [-48.490, -1.455]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Cidade Velha",
+            "info": "Área histórica com potencial para projetos de arborização."
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [-48.490, -1.460],
+                [-48.485, -1.460],
+                [-48.485, -1.457],
+                [-48.490, -1.457],
+                [-48.490, -1.460]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Nazare",
+            "info": "Zona de alta densidade, ideal para projetos rápidos de arborização."
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [-48.490, -1.470],
+                [-48.485, -1.470],
+                [-48.485, -1.467],
+                [-48.490, -1.467],
+                [-48.490, -1.470]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Reduto",
+            "info": "Área de grande potencial para arborização urbana."
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [-48.485, -1.474],
+                [-48.480, -1.474],
+                [-48.480, -1.472],
+                [-48.485, -1.472],
+                [-48.485, -1.474]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "São Brás",
+            "info": "Área importante para plantio de espécies nativas."
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [-48.485, -1.430],
+                [-48.480, -1.430],
+                [-48.480, -1.428],
+                [-48.485, -1.428],
+                [-48.485, -1.430]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Marco",
+            "info": "Área ampla, com grande potencial para reflorestamento."
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [-48.478, -1.430],
+                [-48.475, -1.429],
+                [-48.475, -1.427],
+                [-48.478, -1.426],
+                [-48.478, -1.430]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Umarizal",
+            "info": "Espaço com boa cobertura de solo, ideal para reflorestamento."
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [-48.455, -1.455],
+                [-48.450, -1.453],
+                [-48.450, -1.451],
+                [-48.455, -1.450],
+                [-48.455, -1.455]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Benguí",
+            "info": "Zona com solo mais arenoso, ideal para espécies de rápido crescimento."
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [-48.430, -1.423],
+                [-48.425, -1.422],
+                [-48.425, -1.420],
+                [-48.430, -1.419],
+                [-48.430, -1.423]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Cabanagem",
+            "info": "Área com baixa arborização. Ideal para espécies de rápido crescimento."
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [-48.400, -1.415],
+                [-48.395, -1.413],
+                [-48.395, -1.411],
+                [-48.400, -1.409],
+                [-48.400, -1.415]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Coqueiro",
+            "info": "Área propícia para plantio de espécies adaptadas ao solo arenoso."
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [-48.450, -1.440],
+                [-48.445, -1.439],
+                [-48.445, -1.437],
+                [-48.450, -1.436],
+                [-48.450, -1.440]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Parque Verde",
+            "info": "Área ampla disponível para reflorestamento urbano."
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [-48.440, -1.450],
+                [-48.435, -1.448],
+                [-48.435, -1.445],
+                [-48.440, -1.443],
+                [-48.440, -1.450]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "Pratinha",
+            "info": "Área com espaço livre. Ideal para arborização linear."
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [-48.430, -1.450],
+                [-48.425, -1.448],
+                [-48.425, -1.445],
+                [-48.430, -1.444],
+                [-48.430, -1.450]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "nome": "São Clemente",
+            "info": "Área de baixo impacto, excelente para arborização."
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [-48.400, -1.460],
+                [-48.395, -1.459],
+                [-48.395, -1.457],
+                [-48.400, -1.456],
+                [-48.400, -1.460]
+              ]
+            ]
+          }
+        }
+      ]
+    };
+
+    // Função para adicionar o GeoJSON ao mapa
+    L.geoJSON(geojsonData, {
+      style: function (feature) {
+        return {
+          color: 'green',
+          fillColor: 'green',
+          fillOpacity: 0.3
+        };
+      },
+      onEachFeature: function (feature, layer) {
+        layer.bindPopup("<b>" + feature.properties.nome + "</b><br>" + feature.properties.info);
+      }
+    }).addTo(map);
+
+    // Opcional: Adiciona ícones de árvores nos pontos de cada área
+    geojsonData.features.forEach(function (feature) {
+      const coords = feature.geometry.coordinates[0];
+      const firstPoint = coords[0]; // Pega o primeiro ponto para o ícone
+
+      L.marker([firstPoint[1], firstPoint[0]], { icon: treeIcon })
+        .addTo(map)
+        .bindPopup("<b>" + feature.properties.nome + "</b><br>" + feature.properties.info);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Meu Perfil - ArboVita</title>
+
+  <!-- Favicons -->
+  <link href="assets/img/logo.jpeg" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">ArboVita</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Página Principal</a></li>
+          <li><a href="about.html">Sobre Nós</a></li>
+          <li><a href="subscription.html">Assinatura</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="profile.html">Carregando...</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title dark-background">
+      <div class="container position-relative">
+        <h1><i class="bi bi-person-circle"></i> Meu Perfil</h1>
+        <p>Acompanhe seu impacto ambiental.</p>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Perfil</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <section id="profile" class="section">
+      <div class="container">
+        
+        <!-- Stats Row -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card p-3 shadow-sm border-0 profile-stat-card mb-3">
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle bg-success bg-opacity-10 p-3 me-3 text-success">
+                            <i class="bi bi-tree-fill fs-3"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-0 fw-bold">12 Árvores</h5>
+                            <small class="text-muted">Plantadas por você</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3 shadow-sm border-0 profile-stat-card mb-3" style="border-left-color: #0dcaf0;">
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle bg-info bg-opacity-10 p-3 me-3 text-info">
+                            <i class="bi bi-cloud-haze2-fill fs-3"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-0 fw-bold">-180kg CO2</h5>
+                            <small class="text-muted">Compensados este ano</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3 shadow-sm border-0 profile-stat-card mb-3" style="border-left-color: #ffc107;">
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle bg-warning bg-opacity-10 p-3 me-3 text-warning">
+                            <i class="bi bi-award-fill fs-3"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-0 fw-bold">Nível: Guardião</h5>
+                            <small class="text-muted">Sua patente atual</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row gy-4">
+
+          <!-- Sidebar -->
+          <div class="col-lg-4">
+            <div class="card p-4 shadow-sm border-0 h-100">
+              <div class="text-center mb-4">
+                <div class="position-relative d-inline-block">
+                    <div class="rounded-circle bg-success text-white d-inline-flex align-items-center justify-content-center border border-5 border-white shadow" style="width: 100px; height: 100px; font-size: 40px;">
+                    <i class="bi bi-person"></i>
+                    </div>
+                    <span class="position-absolute bottom-0 end-0 bg-warning border border-light rounded-circle p-1" title="Usuário Verificado"><i class="bi bi-check-circle-fill text-white small"></i></span>
+                </div>
+                <h4 class="mt-3 fw-bold text-success" id="profile-name">Usuário</h4>
+                <p class="text-muted small"><i class="bi bi-geo-alt-fill"></i> Belém, PA</p>
+              </div>
+              
+              <div class="d-grid gap-2">
+                <a href="subscription.html" class="btn btn-outline-success"><i class="bi bi-plus-circle"></i> Nova Assinatura</a>
+                <button id="btnLogout" class="btn btn-outline-danger"><i class="bi bi-box-arrow-right"></i> Sair da Conta</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Conteúdo Principal -->
+          <div class="col-lg-8">
+            
+            <!-- Alterar Dados -->
+            <div class="card p-4 shadow-sm border-0 mb-4">
+              <h4 class="mb-3 text-success border-bottom pb-2"><i class="bi bi-pencil-square"></i> Meus Dados</h4>
+              <form id="updateForm" class="mt-3">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="nome" class="form-label fw-bold small text-secondary">Nome de Usuário</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light"><i class="bi bi-person"></i></span>
+                            <input type="text" class="form-control" id="nome" name="nome" placeholder="Seu nome de usuário">
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="email" class="form-label fw-bold small text-secondary">E-mail</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light"><i class="bi bi-envelope"></i></span>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Seu e-mail cadastrado">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="senha" class="form-label fw-bold small text-secondary">Nova Senha</label>
+                  <div class="input-group">
+                      <span class="input-group-text bg-light"><i class="bi bi-key"></i></span>
+                      <input type="password" class="form-control" id="senha" name="senha" placeholder="Deixe em branco para não alterar">
+                  </div>
+                </div>
+                <div class="text-end">
+                    <button type="submit" class="btn btn-success px-4"><i class="bi bi-save"></i> Salvar Alterações</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Dados de Pagamento -->
+            <div class="card p-4 shadow-sm border-0">
+              <h4 class="mb-3 text-success border-bottom pb-2"><i class="bi bi-wallet2"></i> Assinatura & Pagamento</h4>
+              <div id="payment-container" class="mt-3">
+                <!-- O conteúdo será injetado via JavaScript -->
+                <p class="text-muted">Carregando...</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+     <div class="container copyright text-center mt-4">
+      <p>© <span>Direitos Autorais</span> <strong class="px-1 sitename">ArboVita.</strong> <span>Todos os direitos são reservados.</span></p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    // Lógica Específica da Página de Perfil
+    document.addEventListener('DOMContentLoaded', function() {
+      const user = localStorage.getItem('arboVitaUser');
+      const email = sessionStorage.getItem('arboVitaEmail'); // Pega o email do sessionStorage
+      
+      // Se não tiver usuário, chuta pro login
+      if (!user) {
+        window.location.href = 'pricing.html';
+        return;
+      }
+
+      // Preenche o nome no cabeçalho do perfil
+      document.getElementById('profile-name').textContent = user;
+      
+      // Preenche os campos do formulário "Meus Dados"
+      document.getElementById('nome').value = user;
+      document.getElementById('email').value = email || ''; // Preenche com email ou vazio
+
+      // --- LÓGICA DE PAGAMENTO ---
+      renderPaymentMethods();
+
+      function renderPaymentMethods() {
+        const container = document.getElementById('payment-container');
+        const savedCard = localStorage.getItem('arboVitaCard');
+
+        if (savedCard) {
+          const cardData = JSON.parse(savedCard);
+          container.innerHTML = `
+            <div class="d-flex align-items-center justify-content-between p-3 rounded bg-light border border-success border-opacity-25">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-credit-card-2-front fs-2 me-3 text-success"></i>
+                <div>
+                    <h6 class="mb-0 fw-bold text-dark">${cardData.brand} final **** ${cardData.last4}</h6>
+                    <small class="text-success"><i class="bi bi-check-circle-fill"></i> Ativo</small>
+                </div>
+              </div>
+              <button class="btn btn-sm btn-outline-danger" onclick="removeCard()" title="Cancelar Assinatura"><i class="bi bi-trash"></i></button>
+            </div>
+            <div class="mt-3 text-muted small">
+                <i class="bi bi-calendar-event"></i> Próxima contribuição em 30 dias. <span class="text-success fw-bold">Obrigado por ajudar o planeta!</span>
+            </div>
+          `;
+        } else {
+          container.innerHTML = `
+            <div class="text-center py-4 bg-light rounded">
+                <i class="bi bi-tree text-secondary fs-1 d-block mb-2"></i>
+                <p class="text-muted">Você ainda não tem uma assinatura ativa.</p>
+                <a href="subscription.html" class="btn btn-sm btn-success px-4 rounded-pill">Seja um Apoiador</a>
+            </div>
+          `;
+        }
+      }
+
+      // Função global para ser acessada pelo onclick do HTML injetado
+      window.removeCard = function() {
+        if(confirm('Tem certeza que deseja remover este cartão?')) {
+          localStorage.removeItem('arboVitaCard');
+          renderPaymentMethods(); // Re-renderiza a área
+        }
+      };
+      // ---------------------------
+
+      // Botão de Logout
+      document.getElementById('btnLogout').addEventListener('click', function() {
+        localStorage.removeItem('arboVitaUser');
+        sessionStorage.removeItem('arboVitaEmail'); // Remove o email também
+        localStorage.removeItem('arboVitaCard'); // Remove o cartão ao deslogar
+        alert('Você saiu da conta.');
+        window.location.href = 'index.html';
+      });
+
+      // Formulário de Atualização
+      document.getElementById('updateForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        
+        // Adiciona o usuário atual para o servidor saber quem é
+        formData.append('usuario_atual', user);
+
+        fetch('/api/update_profile', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            alert('Dados atualizados com sucesso!');
+            // Atualiza o localStorage se mudou o nome de usuário
+            if (formData.get('nome')) {
+              localStorage.setItem('arboVitaUser', formData.get('nome'));
+            }
+            // Atualiza o sessionStorage se mudou o email
+            if (formData.get('email')) {
+              sessionStorage.setItem('arboVitaEmail', formData.get('email'));
+            }
+            location.reload(); // Recarrega para mostrar as mudanças
+          } else {
+            alert('Erro: ' + data.message);
+          }
+        })
+        .catch(error => alert('Erro ao atualizar.'));
+      });
+    });
+  </script>
+
+</body>
+</html>
