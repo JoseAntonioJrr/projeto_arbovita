@@ -96,4 +96,18 @@ Estrutura das tabelas:
 - messages: Guarda as mensagens enviadas pelo formulário de contato.
 - newsletter: Lista de emails inscritos para novidades.
 
+-----------------------------------------------------------------------------
+SISTEMA DE PAGAMENTO (Simulação)
+-----------------------------------------------------------------------------
+O projeto inclui um fluxo de assinatura (Billing) para fins de demonstração
+de interface e experiência do usuário.
+
+- Funcionamento: O formulário de assinatura envia os dados para a API.
+- Backend: A rota /api/subscribe simula o processamento e retorna sucesso
+  imediato.
+- Segurança: Nenhuma cobrança real é efetuada. Dados de cartão de crédito
+  NÃO são salvos no banco de dados. O frontend utiliza o armazenamento do
+  navegador (localStorage) apenas para persistir o estado de "Assinante"
+  durante a navegação.
+
 
