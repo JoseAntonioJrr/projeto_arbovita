@@ -81,4 +81,19 @@ ESTRUTURA DE PASTAS
 server.py
    -> O "cérebro" do backend, responsável pelas rotas e lógica.
 
+-----------------------------------------------------------------------------
+BANCO DE DADOS (SQLite)
+-----------------------------------------------------------------------------
+O projeto utiliza um banco de dados SQLite, que é leve e não requer instalação
+de servidores complexos.
+
+- Arquivo: database.db (criado automaticamente na raiz do projeto).
+- Gerenciamento: O arquivo server.py verifica se o banco existe ao iniciar.
+  Se não existir, ele cria o arquivo e as tabelas automaticamente.
+
+Estrutura das tabelas:
+- users: Armazena dados de cadastro e login.
+- messages: Guarda as mensagens enviadas pelo formulário de contato.
+- newsletter: Lista de emails inscritos para novidades.
+
 
