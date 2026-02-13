@@ -2,12 +2,12 @@ from flask import Flask, request, send_from_directory, jsonify
 import os
 import sqlite3
 
-# Define o diretório raiz do projeto como o diretório onde este script está
+# Define o diretório raiz do projeto e o diretório de templates
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+TEMPLATE_DIR = os.path.join(PROJECT_ROOT, 'templates')
 DB_PATH = os.path.join(PROJECT_ROOT, 'database.db')
 
-# Desativa a pasta estática padrão do Flask para evitar conflitos,
-# já que vamos gerenciar os arquivos estáticos manualmente na rota abaixo.
+# Desativa a pasta estática padrão do Flask
 app = Flask(__name__, static_folder=None)
 
 def get_db_connection():
@@ -55,21 +55,26 @@ init_db()
 # Configuração para servir a página inicial
 @app.route('/')
 def serve_index():
-    return send_from_directory(PROJECT_ROOT, 'index.html')
+    return send_from_directory(TEMPLATE_DIR, 'index.html')
 
 # Rota genérica para servir arquivos estáticos e páginas HTML
 @app.route('/<path:path>')
 def serve_static(path):
-    # Constrói o caminho completo do arquivo solicitado
-    full_path = os.path.join(PROJECT_ROOT, path)
-    
-    # 1. Verifica se o arquivo existe exatamente como solicitado (ex: assets/css/style.css)
-    if os.path.exists(full_path) and os.path.isfile(full_path):
+    # 1. Primeiro tenta servir arquivos estáticos (CSS, JS, Imagens) da raiz do projeto
+    # Ex: assets/css/main.css, mapa-arborizacao-belem/arvore.png
+    full_path_root = os.path.join(PROJECT_ROOT, path)
+    if os.path.exists(full_path_root) and os.path.isfile(full_path_root):
         return send_from_directory(PROJECT_ROOT, path)
     
-    # 2. Se não achou, tenta adicionar a extensão .html (ex: /about -> about.html)
-    if os.path.exists(full_path + '.html') and os.path.isfile(full_path + '.html'):
-        return send_from_directory(PROJECT_ROOT, path + '.html')
+    # 2. Se não for estático, tenta buscar nos templates (arquivos HTML movidos)
+    # Ex: about.html
+    full_path_template = os.path.join(TEMPLATE_DIR, path)
+    if os.path.exists(full_path_template) and os.path.isfile(full_path_template):
+        return send_from_directory(TEMPLATE_DIR, path)
+
+    # 3. Tenta adicionar a extensão .html se o usuário digitou sem (ex: /about)
+    if os.path.exists(full_path_template + '.html'):
+         return send_from_directory(TEMPLATE_DIR, path + '.html')
     
     # Log de erro no terminal para ajudar a depurar
     print(f"[404] Arquivo não encontrado: {path}")
