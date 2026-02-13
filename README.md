@@ -72,9 +72,13 @@ COMO RODAR O PROJETO
 -----------------------------------------------------------------------------
 ESTRUTURA DE PASTAS
 -----------------------------------------------------------------------------
-/assets      -> Contém imagens (img), estilos (css), scripts (js) e bibliotecas (vendor).
-/templates   -> (Se aplicável) Arquivos HTML renderizados pelo Flask.
-server.py    -> O "cérebro" do backend, responsável pelas rotas e lógica.
-*.html       -> Páginas do site (index, about, portfolio, etc.).
+/assets
+   -> Contém imagens (img), estilos (css), scripts (js) e bibliotecas (vendor).
+
+/templates
+   -> Arquivos HTML renderizados pelo Flask.
+
+server.py
+   -> O "cérebro" do backend, responsável pelas rotas e lógica.
 
 
