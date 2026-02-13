@@ -1,4 +1,4 @@
-PROJETO ARBOVITA - LEIA-ME (README)
+# PROJETO ARBOVITA
 
 SOBRE O PROJETO
 -----------------------------------------------------------------------------
